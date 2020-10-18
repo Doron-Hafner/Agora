@@ -18,7 +18,7 @@ class App extends Component {
             <th>quantity</th>
             <th></th>
           </tr>
-            {this.props.Invetory.list.map((i, index) => <Item item={i} key={index}/>)}
+          {this.props.Invetory.list.map((i, index) => <Item item={i} key={index} />)}
         </table>
       </div>
     )

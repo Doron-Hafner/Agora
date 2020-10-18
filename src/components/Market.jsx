@@ -9,12 +9,15 @@ class Market extends Component {
         })
     }
     addItem = () => {
-        this.props.Invetory.addItem(this.state.itemName)
+        if (!this.state || !this.state.itemName) { alert('enter valid name') }
+        else {
+            this.props.Invetory.addItem(this.state.itemName)
+        }
     }
     render() {
         return (
             <div>
-                <input type="text" onChange={this.handleChange}/>
+                <input type="text" onChange={this.handleChange} />
                 <button onClick={this.addItem}>Add Item</button>
                 <h5>You have {this.props.Invetory.numItems} items in your invetory</h5>
             </div>
