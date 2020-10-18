@@ -1,3 +1,14 @@
-.crossed {
-    text-decoration: line-through
-}
+body{
+    font-family: 'Helvetica Neue';
+  }
+  table{
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  td, th{
+    border: 1px solid #dddddd;
+  }
+  tr:nth-child(even){
+    background-color: #dddddd;
+  }

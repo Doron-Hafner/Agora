@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import './App.css';
 import Item from './components/Item';
-
-
+import Market from './components/Market'
+@inject("Invetory")
 @observer
 class App extends Component {
-  handleChange = (e) => {
-    this.setState({
-      newItem: e.target.value
-    })
-  }
-  addItem = () => {
-    this.props.store.addItem(this.state.newItem)
-  }
+
   render() {
     return (
-      <div className="App">
-        <input onChange = {this.handleChange}/>
-        <button onClick = {this.addItem}>Add</button>
-        {this.props.store.list.map((i,ind) => <Item item={i}
-                                                    key={ind}
-                                                    store={this.props.store}/>
-          )}
+      <div>
+        <Market />
+        <table>
+          <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>quantity</th>
+            <th></th>
+          </tr>
+            {this.props.Invetory.list.map((i, index) => <Item item={i} key={index}/>)}
+        </table>
       </div>
-    );
+    )
   }
 }
-
 export default App;

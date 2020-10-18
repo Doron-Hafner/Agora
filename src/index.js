@@ -4,18 +4,16 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { Item } from '../src/stores/Item'
-import { ShoppingList } from '../src/stores/ShoppingList'
+import { Invetory as invetory } from './stores/Invetory'
+import { Item as item} from './stores/Item'
+import { Provider } from 'mobx-react';
 
+const Invetory = new invetory()
+const Item = new item()
+const stores = {Invetory, Item}
 
-let potatoes = new Item("Potatoes")
-let corn = new Item("corn")
-let sombreros = new Item("sombreros")
-let groceryList = new ShoppingList()
-groceryList.list.push(potatoes)
-groceryList.list.push(corn)
-groceryList.list.push(sombreros)
-
+let ipod = new item('ipod')
+Invetory.list.push(ipod)
 // Use the prop "store" for your store
-ReactDOM.render(<App store={groceryList} />, document.getElementById('root'));
+ReactDOM.render(<Provider {...stores}><App /></Provider> , document.getElementById('root'));
 registerServiceWorker();
